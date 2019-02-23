@@ -17,6 +17,20 @@ function shoppingListHander() {
         </div>
       </li>`);
   });
+
+  // When you click on the submit button, you are reaching up to
+  // the sibling of the parent
+  $('.shopping-list').on('click', 'li .shopping-item-toggle', function(event){
+    event.stopPropagation();
+    $(this).parent().siblings().toggleClass('shopping-item__checked');
+  });
+
+  // Delete button
+  $('.shopping-list').on('click', 'li .shopping-item-delete', function(event){
+    $(this).parent().parent().remove();
+  });
+
+
 }
 
 $(shoppingListHander);
